@@ -25,7 +25,7 @@
     dependencies {
         implementation 'com.github.Tan5253:JpushUtils:版本号'
     }
-     ```
+```
 2、在模块的build.gradle中添加
 ```
     defaultConfig {
@@ -36,11 +36,11 @@
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
-   ``` 
+``` 
 3、初始化。
  ``` 
     JpushUtils.getInstance(this).init()
-     ``` 
+ ``` 
 4、使用方法参考JpushUtils工具类。
 
 5、接收点击通知的事件。
