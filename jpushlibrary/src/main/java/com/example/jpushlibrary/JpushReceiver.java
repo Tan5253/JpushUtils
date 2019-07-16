@@ -34,8 +34,6 @@ public class JpushReceiver extends BroadcastReceiver {
 
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Log.d("Jpush", "[MyReceiver] 接收到推送下来的自定义消息: " + bundle.getString(JPushInterface.EXTRA_MESSAGE));
-            // processCustomMessage(context, bundle);
-            //RxBus.post(TAG_RECEIVE_NOTIFICATION, bundle);
             LiveDataBus.get().with(TAG_RECEIVE_NOTIFICATION).postValue(bundle);
 
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
@@ -47,7 +45,6 @@ public class JpushReceiver extends BroadcastReceiver {
             Log.d("Jpush", "[MyReceiver] 用户点击打开了通知");
 
             LiveDataBus.get().with(TAG_CLICK_NOTIFICATION).postValue(intent);
-          //  RxBus.post(TAG_CLICK_NOTIFICATION, intent);
 
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
             Log.d("Jpush", "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
@@ -95,24 +92,4 @@ public class JpushReceiver extends BroadcastReceiver {
         return sb.toString();
     }
 
-    // private void processCustomMessage(Context context, Bundle bundle) {
-    // if (MainActivity.isForeground) {
-    // String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
-    // String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-    // Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
-    // msgIntent.putExtra(MainActivity.KEY_MESSAGE, message);
-    // if (!ExampleUtil.isEmpty(extras)) {
-    // try {
-    // JSONObject extraJson = new JSONObject(extras);
-    // if (null != extraJson && extraJson.length() > 0) {
-    // msgIntent.putExtra(MainActivity.KEY_EXTRAS, extras);
-    // }
-    // } catch (JSONException e) {
-    //
-    // }
-    //
-    // }
-    // context.sendBroadcast(msgIntent);
-    // }
-    // }
 }
